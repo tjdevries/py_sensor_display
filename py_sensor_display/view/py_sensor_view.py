@@ -3,16 +3,12 @@ from model.py_sensor_model import Model
 
 class View():
 	def __init__(self, model):
-<<<<<<< HEAD
-		self.model = Model()
+		self.model = model
 		# win = Gtk.Window()
 		# win.connect("delete-event", GTK.main_quit)
 		# win.show_all()
 		# GTK.main()
-=======
-		self.model = model
->>>>>>> origin/master
-		
+
 	def get_machines(self):
 		return self.model.get_machines()
 	
