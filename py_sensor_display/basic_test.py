@@ -18,12 +18,12 @@ print("Success")
 #create our view
 view = View(controller.get_model())
 
-view.print_machine_id(machine1)
-view.print_machine_type(machine1)
-view.print_machine_location(machine1)
-view.print_machine_status(machine1)
+view.print_machine_id(1)
+view.print_machine_type(1)
+view.print_machine_location(1)
+view.print_machine_status(1)
 
-assert(view.get_machines() == machine1)
+assert(view.get_machines() == 1)
 
 print("Another Success")
 

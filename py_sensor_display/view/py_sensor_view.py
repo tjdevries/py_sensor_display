@@ -8,35 +8,26 @@ class View():
 	def get_machines(self):
 		self.model.get_machines()
 	
-	def get_machine_object(self, id):
-		self.model.get_machine_object(id)
-	
-	def get_machine_status(self, machine):
-		self.model.get_machine_status(machine)
+	def get_machine_status(self, id):
+		self.model.get_machine_status(id)
 		
-	def get_machine_location(self, machine):
-		self.model.get_machine_location(machine)
+	def get_machine_location(self, id):
+		self.model.get_machine_location(id)
 		
-	def get_machine_type(self, machine):
-		self.model.get_machine_type(machine)
-		
-	def get_machine_id(self, machine):
-		self.model.get_machine_id(machine)
+	def get_machine_type(self, id):
+		self.model.get_machine_type(id)
 		
 	def print_machines(self):
 		print(self.model.get_machines())
 	
-	def print_machine_object(self, id):
-		print(self.model.get_machine_object(id))
-	
-	def print_machine_status(self, machine):
-		print(self.model.get_machine_status(machine))
+	def print_machine_status(self, id):
+		print(self.model.get_machine_status(id))
 		
-	def print_machine_location(self, machine):
-		print(self.model.get_machine_location(machine))
+	def print_machine_location(self, id):
+		print(self.model.get_machine_location(id))
 		
-	def print_machine_type(self, machine):
-		print(self.model.get_machine_type(machine))
+	def print_machine_type(self, id):
+		print(self.model.get_machine_type(id))
 		
 	def print_machine_id(self, machine):
-		print(self.model.get_machine_id(machine))
+		print(machine.id)
