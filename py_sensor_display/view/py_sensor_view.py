@@ -32,5 +32,14 @@ class View():
 		
 	def print_machine_type(self, id):
 		print(self.get_machine_type(id))
+	
+	def format_line(self, args):
+		return "| {0:3} | {1:15} |\n".format(args[0], args[1])
 		
+	def display_status(self):
+		final_string = self.format_line(["ID", "Machine Type"])
 		
+		for id in self.get_machines().keys():
+			final_string += self.format_line([id, self.get_machine_type(id)])
+			
+		return final_string

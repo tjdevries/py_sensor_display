@@ -28,7 +28,17 @@ class TestBasicFunctions(unittest.TestCase):
 		# Add our example machine
 		self.controller.add_machine(self.machine1)
 		
-		self.view.print_machine_type(1)
+		# self.view.print_machine_type(1)
+		
+	def testDisplayStatus(self):
+		# Add our example machine
+		self.controller.add_machine(self.machine1)
+		
+		final_string = self.view.format_line(["ID", "Machine Type"]) + \
+			self.view.format_line([self.machine1.id, self.machine1.get_type()])
+		
+		self.assertEqual(self.view.display_status(), final_string)
+		
 """
 view.print_machine_id(1)
 view.print_machine_type(1)
