@@ -9,10 +9,10 @@ class Model():
 		self.machines = {}
 		
 	def add_machine(self, machine):
-		pass
+		machines[machine.id] = machine
 		
-	def remove_machine(self, machine):
-		pass
+	def remove_machine(self, id):
+		del machines[id]
 	
 	def get_machines(self):
 		pass
@@ -21,15 +21,23 @@ class Model():
 		pass
 	
 	def get_machine_status(self, machine):
-		pass
+		pass	
 		
 	def set_machine_status(self, machine, status):
 		pass
 		
 	def set_machine_location(self, machine, location):
+		pass	
+		
+	def get_machine_location(self, machine):
 		pass
-	
-
+		
+	def get_machine_type(self, machine):
+		pass
+		
+	def get_machine_id(self, machine):
+		pass	
+		
 class Status(Enum):
 	UNKNOWN = 0
 	OPEN = 1

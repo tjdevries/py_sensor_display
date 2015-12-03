@@ -22,3 +22,6 @@ class Controller():
 		
 	def set_machine_location(self, machine, location):
 		pass
+		
+	def get_model(self):
+		return self.model
