@@ -10,6 +10,10 @@ class Controller():
 		
 	def remove_machine(self, machine):
 		pass
+	
+	# Getters
+	def get_machines(self):
+		return self.model.get_machines()
 		
 	def get_machine_object(self, id):
 		pass

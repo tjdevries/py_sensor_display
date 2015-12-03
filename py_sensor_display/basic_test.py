@@ -11,7 +11,7 @@ machine1 = Machine(1, MachineType.TREADMILL, [1, 1, 1])
 # Add our example machine
 controller.add_machine(machine1)
 
-#assert(controller.get_machine_object(0) == machine1)
+assert(controller.get_machines()[1] == machine1)
 
 print("Success")
 

@@ -9,24 +9,20 @@ class Model():
 		self.machines = {}
 		
 	def add_machine(self, machine):
-		machines[machine.id] = machine
+		if machine.id in self.machines.keys():
+			raise Exception("Machine with this ID has already been added")
+
+		self.machines[machine.id] = machine
 		
 	def remove_machine(self, id):
 		del machines[id]
 	
-	def get_machines(self):
-		pass
+	# Getters
 	
-	def get_machine_object(self, id):
-		pass
+	def get_machines(self):
+		return self.machines
 	
 	def get_machine_status(self, machine):
-		pass	
-		
-	def set_machine_status(self, machine, status):
-		pass
-		
-	def set_machine_location(self, machine, location):
 		pass	
 		
 	def get_machine_location(self, machine):
@@ -34,9 +30,21 @@ class Model():
 		
 	def get_machine_type(self, machine):
 		pass
+	
+	# Setters
+	
+	def set_machine_status(self, machine, status):
+		pass
+		
+	def set_machine_location(self, machine, location):
+		pass		
+
+	# maybe bad
+	def get_machine_object(self, id):
+		return self.machines[id]
 		
 	def get_machine_id(self, machine):
-		pass	
+		return 
 		
 class Status(Enum):
 	UNKNOWN = 0
@@ -51,7 +59,7 @@ class MachineType(Enum):
 	
 class Machine():
 	def __init__(self, id, type, location):
-		self.id = None
-		self.type = None
-		self.location = None
+		self.id = id
+		self.type = type
+		self.location = location
 		self.status = Status.UNKNOWN
