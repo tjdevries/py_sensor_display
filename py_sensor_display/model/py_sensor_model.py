@@ -22,21 +22,21 @@ class Model():
 	def get_machines(self):
 		return self.machines
 	
-	def get_machine_status(self, machine):
-		pass	
+	def get_machine_status(self, id):
+		return self.machines[id].get_status()	
 		
-	def get_machine_location(self, machine):
-		pass
+	def get_machine_location(self, id):
+		return self.machines[id].get_location()
 		
-	def get_machine_type(self, machine):
-		pass
+	def get_machine_type(self, id):
+		return self.machines[id].get_type()
 	
 	# Setters
 	
-	def set_machine_status(self, machine, status):
+	def set_machine_status(self, id, status):
 		pass
 		
-	def set_machine_location(self, machine, location):
+	def set_machine_location(self, id, location):
 		pass		
 
 	# maybe bad
@@ -63,3 +63,12 @@ class Machine():
 		self.type = type
 		self.location = location
 		self.status = Status.UNKNOWN
+		
+	def get_status(self):
+		return self.status
+		
+	def get_location(self):
+		return self.location
+		
+	def get_type(self):
+		return self.type
