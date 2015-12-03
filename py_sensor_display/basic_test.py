@@ -23,12 +23,24 @@ class TestBasicFunctions(unittest.TestCase):
 		self.controller.add_machine(self.machine1)
 
 		self.assertEqual(self.controller.get_machines()[1], self.machine1)
+		
+class TestViewFunctions(unittest.TestCase):
+	def setUp(self):
+		# Create our controller
+		self.controller = Controller()
+	
+		#create our view
+		self.view = View(self.controller.get_model())
+		
+		# Create an example machine
+		self.machine1 = Machine(1, MachineType.TREADMILL, [1, 1, 1])
 
 	def testGetMachineType(self):
 		# Add our example machine
 		self.controller.add_machine(self.machine1)
 		
 		# self.view.print_machine_type(1)
+		self.assertEqual(self.view.get_machine_type(self.machine1.id),self.machine1.type)
 		
 	def testDisplayStatus(self):
 		# Add our example machine
