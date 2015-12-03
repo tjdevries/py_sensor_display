@@ -34,10 +34,10 @@ class Model():
 	# Setters
 	
 	def set_machine_status(self, id, status):
-		pass
+		self.machines[id].set_status(status)
 		
 	def set_machine_location(self, id, location):
-		pass		
+		self.machines[id].set_location(location)		
 
 	# maybe bad
 	def get_machine_object(self, id):
@@ -57,13 +57,19 @@ class MachineType(Enum):
 	TREADMILL = 1
 	BICYCLE = 2
 	
+	def __str__(self):
+		return self.name.capitalize()
+		
+	
 class Machine():
 	def __init__(self, id, type, location):
 		self.id = id
 		self.type = type
 		self.location = location
 		self.status = Status.UNKNOWN
-		
+	
+	# Getters
+	
 	def get_status(self):
 		return self.status
 		
@@ -72,3 +78,10 @@ class Machine():
 		
 	def get_type(self):
 		return self.type
+		
+	# Setters
+	def set_status(self, status):
+		self.status = status
+		
+	def set_location(self, location):
+		self.location = location

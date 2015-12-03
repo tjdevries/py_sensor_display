@@ -3,31 +3,31 @@ from model.py_sensor_model import Model
 
 class View():
 	def __init__(self, model):
-		self.model = Model()
+		self.model = model
 		
 	def get_machines(self):
-		self.model.get_machines()
+		return self.model.get_machines()
 	
 	def get_machine_status(self, id):
-		self.model.get_machine_status(id)
+		return self.model.get_machine_status(id)
 		
 	def get_machine_location(self, id):
-		self.model.get_machine_location(id)
+		return self.model.get_machine_location(id)
 		
 	def get_machine_type(self, id):
-		self.model.get_machine_type(id)
+		return self.model.get_machine_type(id)
 		
 	def print_machines(self):
-		print(self.model.get_machines())
+		print(self.get_machines())
 	
 	def print_machine_status(self, id):
-		print(self.model.get_machine_status(id))
+		print(self.get_machine_status(id))
 		
 	def print_machine_location(self, id):
-		print(self.model.get_machine_location(id))
+		print(self.get_machine_location(id))
 		
 	def print_machine_type(self, id):
-		print(self.model.get_machine_type(id))
+		print(self.get_machine_type(id))
 		
 	def print_machine_id(self, machine):
 		print(machine.id)
