@@ -4,6 +4,10 @@ from model.py_sensor_model import Model
 class View():
 	def __init__(self, model):
 		self.model = Model()
+		# win = Gtk.Window()
+		# win.connect("delete-event", GTK.main_quit)
+		# win.show_all()
+		# GTK.main()
 		
 	def get_machines(self):
 		self.model.get_machines()
@@ -29,5 +33,4 @@ class View():
 	def print_machine_type(self, id):
 		print(self.model.get_machine_type(id))
 		
-	def print_machine_id(self, machine):
-		print(machine.id)
+		
