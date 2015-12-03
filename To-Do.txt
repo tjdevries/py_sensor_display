@@ -1,1 +1,2 @@
 - Consider adding an "Out-of-order" status
+- Format the structure so it acts as a package
