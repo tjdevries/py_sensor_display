@@ -20,18 +20,6 @@ class View():
 		
 	def get_machine_type(self, id):
 		return self.model.get_machine_type(id)
-		
-	def print_machines(self):
-		print(self.get_machines())
-	
-	def print_machine_status(self, id):
-		print(self.get_machine_status(id))
-		
-	def print_machine_location(self, id):
-		print(self.get_machine_location(id))
-		
-	def print_machine_type(self, id):
-		print(self.get_machine_type(id))
 	
 	def format_line(self, args):
 		return "| {0:3} | {1:15} |\n".format(args[0], args[1])

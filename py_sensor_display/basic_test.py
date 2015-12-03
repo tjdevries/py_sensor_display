@@ -38,17 +38,7 @@ class TestBasicFunctions(unittest.TestCase):
 			self.view.format_line([self.machine1.id, self.machine1.get_type()])
 		
 		self.assertEqual(self.view.display_status(), final_string)
-		
-"""
-view.print_machine_id(1)
-view.print_machine_type(1)
-view.print_machine_location(1)
-view.print_machine_status(1)
-
-assert(view.get_machines() == 1)
-
-print("Another Success")
-"""
+	
 
 if __name__ == '__main__':
 	unittest.main()
