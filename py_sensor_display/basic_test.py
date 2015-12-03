@@ -16,7 +16,7 @@ controller.add_machine(machine1)
 print("Success")
 
 #create our view
-view = View(controller.get_model)
+view = View(controller.get_model())
 
 view.print_machine_id(machine1)
 view.print_machine_type(machine1)
