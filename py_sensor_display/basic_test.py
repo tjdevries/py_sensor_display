@@ -1,23 +1,35 @@
+# Standard imports
+import unittest
+
+# Local imports
 from controller.py_sensor_controller import Controller
 from model.py_sensor_model import Model, Status, Machine, MachineType
 from view.py_sensor_view import View
 
-# Create our controller
-controller = Controller()
 
-# Create an example machine
-machine1 = Machine(1, MachineType.TREADMILL, [1, 1, 1])
+class TestBasicFunctions(unittest.TestCase):
+	def setUp(self):
+		# Create our controller
+		self.controller = Controller()
+	
+		#create our view
+		self.view = View(self.controller.get_model())
+		
+		# Create an example machine
+		self.machine1 = Machine(1, MachineType.TREADMILL, [1, 1, 1])
 
-# Add our example machine
-controller.add_machine(machine1)
+	def testAddMachine(self):
+		# Add our example machine
+		self.controller.add_machine(self.machine1)
 
-assert(controller.get_machines()[1] == machine1)
+		self.assertEqual(self.controller.get_machines()[1], self.machine1)
 
-print("Success")
-
-#create our view
-view = View(controller.get_model())
-
+	def testGetMachineType(self):
+		# Add our example machine
+		self.controller.add_machine(self.machine1)
+		
+		self.view.print_machine_type(1)
+"""
 view.print_machine_id(1)
 view.print_machine_type(1)
 view.print_machine_location(1)
@@ -26,4 +38,7 @@ view.print_machine_status(1)
 assert(view.get_machines() == 1)
 
 print("Another Success")
+"""
 
+if __name__ == '__main__':
+	unittest.main()
