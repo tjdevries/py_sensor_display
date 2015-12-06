@@ -1,3 +1,12 @@
+"""
+Controller for our Python Sensor Display
+Made for Engineering 325,
+    but also for our senior design project.
+
+    TJ DeVries
+    Ryan Siekman
+"""
+
 from model.py_sensor_model import Model
 
 class Controller():

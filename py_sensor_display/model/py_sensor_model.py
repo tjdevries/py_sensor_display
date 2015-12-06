@@ -1,7 +1,13 @@
 """
-Model for Py Sensor Display
+Model for our Python Sensor Display
+Made for Engineering 325,
+    but also for our senior design project.
+
+    TJ DeVries
+    Ryan Siekman
 """
 
+# Standard Imports
 from enum import Enum
 
 class Model():
