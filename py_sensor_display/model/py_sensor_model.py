@@ -6,7 +6,6 @@ Made for Engineering 325,
     TJ DeVries
     Ryan Siekman
 """
-# TODO: TODO
 
 # Standard Imports
 from enum import Enum
