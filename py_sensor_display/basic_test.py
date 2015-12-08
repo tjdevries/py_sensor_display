@@ -23,17 +23,29 @@ class TestBasicFunctions(unittest.TestCase):
         self.assertEqual(self.controller.get_machines(), dict())
 
         # Manually add a machine to our machine dictionary
-        self.controller.model[1] = self.machine1
+        self.controller.model.machines[1] = self.machine1
 
-        self.assertEqual(self.controller.get_machines(),{1: machine1})
+        self.assertEqual(self.controller.get_machines(),{1: self.machine1})
 
-        # Manually add another machine 
+        # Manually add another machine
+        machine2 = Machine(2, MachineType.TREADMILL, [2, 2, 2])
+        self.controller.model.machines[2] = machine2
+
+        self.assertEqual(self.controller.get_machines(), {1: self.machine1,2: machine2})
 
     def testAddMachine(self):
         # Add our example machine
         self.controller.add_machine(self.machine1)
 
         self.assertEqual(self.controller.get_machines()[1], self.machine1)
+
+    def testAddMachine_DuplicateMachine(self):
+        # Add our first machine
+        self.controller.add_machine(self.machine1)
+
+        # Try to add the same machine, should fail
+        self.assertRaises(Exception, self.controller.add_machine, self.machine1)
+
 
     def testGetMachine(self):
         pass
