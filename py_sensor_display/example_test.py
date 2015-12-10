@@ -12,7 +12,7 @@ This ideally will be the example we use for the presentation in 325
 # Local Imports
 from controller.py_sensor_controller import Controller
 from model.py_sensor_model import Model, Status, MachineType, Machine
-from view.py_sensor_view import View
+from view.py_sensor_view import View, GTKView
 from basic_test import TestBasicFunctions
 def main():
     """
@@ -23,7 +23,8 @@ def main():
     controller = Controller()
 
     # Create our view
-    view = View(controller.get_model())
+    # view = View(controller.get_model())
+    view = GTKView(controller.get_model())
 
     welcome(controller, view)
     return None

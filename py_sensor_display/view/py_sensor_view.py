@@ -4,7 +4,7 @@ from model.py_sensor_model import Model
 from gi.repository import Gtk
 #import cairo
 
-class View():
+class View:
     def __init__(self, model):
         self.model = model
 
@@ -144,7 +144,7 @@ class View():
 
 
 class GTKView(Gtk.Window, View):
-    def __init__(self):
+    def __init__(self, model):
         #init GTK stuff here
         Gtk.Window.__init__(self, title="Sense-Able Gym Viewer")
         #self.Window.set_size_request(-1, -1)
@@ -155,10 +155,12 @@ class GTKView(Gtk.Window, View):
 
         self.init_buttons()
 
+        View.__init__(self, model)
+
     def init_buttons(self):
         self.box = Gtk.Box(spacing = 6)
         self.add(self.box)
-        
+
         self.button1 = Gtk.Button(label = "Add Machine")
         self.button1.connect("clicked", self.on_button1_clicked)
         self.box.pack_start(self.button1, True, True, 0)
@@ -188,8 +190,8 @@ class GTKView(Gtk.Window, View):
         print("Fool, this don't work yet!")
 
 
-win = GTKView()
-win.connect("delete-event", Gtk.main_quit)
-win.show_all()
-Gtk.main()
+# win = GTKView()
+# win.connect("delete-event", Gtk.main_quit)
+# win.show_all()
+# Gtk.main()
 
