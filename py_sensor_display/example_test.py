@@ -56,6 +56,10 @@ def welcome(controller, view):
     machine4 = Machine(12, MachineType.BICYCLE, [1, 2, 3], True)
     controller.add_machine(machine4)
 
+    # Add our fifth machine
+    machine5 = Machine(7, MachineType.BICYCLE, [5, 6, 1], True)
+    controller.add_machine(machine5)
+
     print(view.display_locations())
 
 
