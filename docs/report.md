@@ -118,7 +118,7 @@ This was really exciting for the team because now the team was able to be quite 
 
 Neither of the two team members had ever worked with a combination of MVC and GTK. In fact, neither of the team members really had an experience with GTK at all. This allowed for a lot of learning and preparation for the senior design project, where there will be a significant amount of work required in the area of UI development to ensure that our project is easy to use.
 
-TODO: <Ryan needs to put GTK information here>
+GTK modules is what makes the majority of GUI's used in Linux systems. It is modular and very useful for almost any application. It worked well in this case since each machine could be shown as it's own individual button, enabling an easy way to interact with the GUI created. In combination with MVC  
 
 ## Conclusion
 
