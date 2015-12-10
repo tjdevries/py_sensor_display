@@ -194,6 +194,27 @@ class GTKView(Gtk.Window, View):
     def gui_display_locations(self):
         current_machines = self.get_machines()
 
+        max_x = 0
+        max_y = 0
+
+        for m, mac in current_machines.items():
+            if mac.location[0] > max_x:
+                max_x = mac.location[0]
+
+            if mac.location[1] > max_y:
+                max_y = mac.location[1]
+
+        max_x += 1
+        max_y += 1
+
+        for i in range(1, max_x):
+            self.grid.attach( Gtk.Button(label = '-----'), i, 0, 1, 1 )
+            self.grid.attach( Gtk.Button(label = '-----'), i, max_y, 1, 1 )
+
+        for i in range(1, max_y):
+            self.grid.attach( Gtk.Button(label = '---  '), 0, i, 1, 1)
+            self.grid.attach( Gtk.Button(label = '  ---'), max_x, i, 1, 1)
+
         for m_id, machine in current_machines.items():
             loc = machine.get_location()
             self.grid.attach( Gtk.Button(label=str(m_id)), loc[0], loc[1], 1, 1)
