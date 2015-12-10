@@ -144,22 +144,31 @@ class View:
 
 class GTKView(Gtk.Window, View):
     def __init__(self, model):
-        #init GTK stuff here
-        Gtk.Window.__init__(self, title="Sense-Able Gym Viewer")
-        img = Gtk.Image()
-        img.set_from_file("treadmill_occupied.jpg")
-        pixbuf = img.get_pixbuf()
-        Gtk.CellRendererPixbuf()
-        #Gdk.cairo_set_source_pixbuf(cr, pixbuf, 10, 10)
-
-        self.init_buttons()
-
+        # Make sure our model is in place correctly
         View.__init__(self, model)
 
-    def init_buttons(self):
-        grid = Gtk.Grid()
-        self.add(grid)
+        # Initialize our window
+        self.window = Gtk.Window(title="Sense-Able Gym Viewer")
 
+        # Create a box that all of our widgets will add to.
+        self.grid = Gtk.Grid()
+
+        # Store that box into our window
+        self.window.add(self.grid)
+
+        # Get the gui_display_locations
+        # self.gui_display_locations()
+
+        # Gdk.cairo_set_source_pixbuf(cr, pixbuf, 10, 10)
+        # img = Gtk.Image()
+        # img.set_from_file("treadmill_occupied.jpg")
+        # pixbuf = img.get_pixbuf()
+        # Gtk.CellRendererPixbuf()
+
+        # Initialize the buttons
+        self.init_buttons()
+
+    def init_buttons(self):
         button1 = Gtk.Button(label = "Machine1")
         button1.connect("clicked", self.on_button1_clicked)
         button2 = Gtk.Button(label="Machine2")
@@ -168,12 +177,34 @@ class GTKView(Gtk.Window, View):
         button3.connect("clicked", self.on_button3_clicked)
         button4 = Gtk.Button(label="Machine4")
         button4.connect("clicked", self.on_button4_clicked)
-        
+
         #attach(child, left, top, width, height) col and rows to attach
-        grid.add(button1)
-        grid.attach(button2, 1, 0, 2, 1)
-        grid.attach(button3, 2, 8, 2, 2)
-        grid.attach(button4, 4, 8, 2, 2)
+        self.grid.add(button1)
+        self.grid.attach(button2, 1, 0, 2, 1)
+        self.grid.attach(button3, 2, 8, 2, 2)
+        self.grid.attach(button4, 4, 8, 2, 2)
+
+    def init_old_buttons(self):
+        """ Currently deprecated """
+        self.button1 = Gtk.Button(label = "Add Machine")
+        self.button1.connect("clicked", self.on_button1_clicked)
+        self.box.pack_start(self.button1, True, True, 0)
+
+        self.button2 = Gtk.Button(label="Machine Busy")
+        self.button2.connect("clicked", self.on_button2_clicked)
+        self.box.pack_start(self.button2, True, True, 0)
+
+        self.button3 = Gtk.Button(label="Remove Machine")
+        self.button3.connect("clicked", self.on_button3_clicked)
+        self.box.pack_start(self.button3, True, True, 0)
+
+        self.button4 = Gtk.Button(label="Machine Free")
+        self.button4.connect("clicked", self.on_button4_clicked)
+        self.box.pack_start(self.button4, True, True, 0)
+
+        self.button5 = Gtk.Button(label="Refresh Machines")
+        self.button5.connect("clicked", self.refresh_machines)
+        self.box.pack_start(self.button5, True, True, 0)
 
     def on_button1_clicked(self, widget):
         print("Fool, this don't work yet!")
@@ -193,12 +224,41 @@ class GTKView(Gtk.Window, View):
     def set_status_switcher(self):
         stack = Gtk.Stack()
         label = Gtk.Label()
+        label2 = Gtk.Label()
         stack.add_titled(label, "label1", "Free")
         stack.add_titled(label, "label2", "Busy")
         stack_switcher = Gtk.StackSwitcher()
         stack_switcher.set_stack(stack)
-        grid.attach(stack_switcher, 0, 50, 2, 1)
-        grid.attach(stack, 2, 50, 2, 1)
+        self.grid.attach(stack_switcher, 0, 50, 2, 1)
+        self.grid.attach(stack, 2, 50, 2, 1)
+
+    def main(self):
+        Gtk.main()
+
+    def refresh_machines(self, widget):
+        current_machines = self.get_machines()
+
+        """
+        for m_id, machine in current_machines.items():
+            loc = machine.get_location()
+            self.table.attach( Gtk.Button(label=str(m_id)), loc[0], loc[1], loc[0], loc[1])
+        """
+        self.ebutton = Gtk.Button(label="test")
+        self.table.add(self.ebutton)
+
+        # self.box.pack_start(self.table, True, True, 10)
+        # self.table.attach( self.ebutton, 0,0,1,1 )
+
+    def gui_display_locations(self):
+        current_machines = self.get_machines()
+
+        self.table = Gtk.Grid()
+
+        for m_id, machine in current_machines.items():
+            loc = machine.get_location()
+            self.table.attach( Gtk.Button(label=str(m_id)), loc[0], loc[1], loc[0], loc[1])
+
+        self.box.pack_start(self.table, True, True, 10)
 
     def start_gui(self, x_size=400, y_size=400):
         """
@@ -209,9 +269,9 @@ class GTKView(Gtk.Window, View):
         :returns: None
 
         """
-        self.set_border_width(10)
-        self.connect("delete-event", Gtk.main_quit)
-        self.show_all()
+        self.window.set_border_width(10)
         self.bot_row()
-        Gtk.main()
+        self.window.connect("delete-event", Gtk.main_quit)
+        self.window.show_all()
+        self.main()
 
