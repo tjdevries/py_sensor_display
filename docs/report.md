@@ -118,10 +118,10 @@ This was really exciting for the team because now the team was able to be quite 
 
 Neither of the two team members had ever worked with a combination of MVC and GTK. In fact, neither of the team members really had an experience with GTK at all. This allowed for a lot of learning and preparation for the senior design project, where there will be a significant amount of work required in the area of UI development to ensure that our project is easy to use.
 
-GTK modules are what makes the majority of GUI's used in Linux systems. It is modular and very useful for almost any application. It worked well in this case since each machine could be shown as it's own individual button, enabling an easy way to interact with the GUI created. In combination with MVC  
+GTK modules are what makes the majority of GUI's used in Linux systems. It is modular and very useful for almost any application. It worked well in this case since each machine could be shown as it's own individual button, enabling an easy way to interact with the GUI created. In combination with MVC, it provides a way to create several different types of views -- for example the text view and the GUI view shown in this project's code -- while still using the same model and controller. This allows for a much more stable system, since each element uses the same backend for all of the processing.
 
 ## Conclusion
 
 Ultimately, the team felt that they met all the goals that were originally proposed for the project. Both of the team members learned a lot of new information, both in the form of processes for development as well as actual implementation strategies. This was not only good practice for the lab, but also really helped the team get a good start on the development side of their Senior Design project.
 
-All the code is freely available for viewing at the projects [github](https://github.com/tjdevries/py_sensor_display/).
+All the code is freely available for viewing at the project's [github](https://github.com/tjdevries/py_sensor_display/).
