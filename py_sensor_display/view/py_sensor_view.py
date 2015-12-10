@@ -156,6 +156,9 @@ class GTKView(Gtk.Window, View):
         # Store that box into our window
         self.window.add(self.grid)
 
+        # Add any initialization variables that we will use
+        self.modifying_machine_id = None
+
         # Get the gui_display_locations
         # self.gui_display_locations()
 
@@ -188,8 +191,15 @@ class GTKView(Gtk.Window, View):
 
         for m_id, machine in current_machines.items():
             loc = machine.get_location()
-            self.grid.attach( Gtk.Button(label=str(m_id)), loc[0], loc[1], 1, 1)
 
+            temp_button = Gtk.Button( label = str(m_id) )
+
+            temp_button.connect("clicked", self.set_modifying_machine_id)
+            self.grid.attach( temp_button, loc[0], loc[1], 1, 1)
+
+    def set_modifying_machine_id(self, button):
+        print('You are now modifying machine `{0}`'.format(button.props.label))
+        self.modifying_machine_id = int(button.props.label)
 
     def gui_display_locations(self):
         current_machines = self.get_machines()
@@ -217,7 +227,11 @@ class GTKView(Gtk.Window, View):
 
         for m_id, machine in current_machines.items():
             loc = machine.get_location()
-            self.grid.attach( Gtk.Button(label=str(m_id)), loc[0], loc[1], 1, 1)
+
+            temp_button = Gtk.Button( label = str(m_id) )
+
+            temp_button.connect("clicked", self.set_modifying_machine_id)
+            self.grid.attach( temp_button, loc[0], loc[1], 1, 1)
 
     def start_gui(self, x_size=400, y_size=400):
         """
