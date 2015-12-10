@@ -2,7 +2,7 @@
 
 Professor Michmerhuizen,
 
-Below is the report regarding the project proposal described in this [document]{https://github.com/tjdevries/py_sensor_display/blob/master/docs/proposal.md}. This report was created in response to the final project for the Engineering 325 Lab. This report was created by TJ DeVries and Ryan Siekman.
+Below is the report regarding the project proposal described in this [document](https://github.com/tjdevries/py_sensor_display/blob/master/docs/proposal.md). This report was created in response to the final project for the Engineering 325 Lab. This report was created by TJ DeVries and Ryan Siekman.
 
 ## Goals of the project
 
