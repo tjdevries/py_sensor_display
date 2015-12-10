@@ -20,6 +20,8 @@ The second category are hardware tools. This is the Raspberry Pi that the team s
 
 There were two main areas that the team showed marked improvement in. 
 
+### Test Driven Development
+
 The first area was in regards to test driven development. Many of the classes and functions were defined with a `pass` statement, and then tests were written for expected output. Once the tests were written, code was developed in order to fulfill the testing requirements. Both TJ and Ryan had little experience doing this in a group setting. It was very helpful for ensuring that not only was code reliable, but also ensuring that all aspects of the code were modular and written in the smallest logical subsections.
 
 An example of this strategy is demonstrated below.
@@ -75,7 +77,7 @@ If you are not familiar with the unittest library in Python, do not worry about 
 
 Obviously at this point, these tests will fail. Neither of the `add_machine` methods do anything at all. So the team began developing the functionality required by the tests. Eventually, the team arrived at the following code.
 
-```
+```python
 class Model():
     def __init__(self):
         self.machines = {}
@@ -110,3 +112,14 @@ OK
 
 This was really exciting for the team because now the team was able to be quite sure that the project met all of the goals that were set for it.
 
+### MVC + GTK
+
+Neither of the two team members had ever worked with a combination of MVC and GTK. In fact, neither of the team members really had an experience with GTK at all. This allowed for a lot of learning and preparation for the senior design project, where there will be a significant amount of work required in the area of UI development to ensure that our project is easy to use.
+
+TODO: <Ryan needs to put GTK information here>
+
+## Conclusion
+
+Ultimately, the team felt that they met all the goals that were originally proposed for the project. Both of the team members learned a lot of new information, both in the form of processes for development as well as actual implementation strategies. This was not only good practice for the lab, but also really helped the team get a good start on the development side of their Senior Design project.
+
+All the code is freely available for viewing at the projects [github](https://github.com/tjdevries/py_sensor_display/).
