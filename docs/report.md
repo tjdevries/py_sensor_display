@@ -6,7 +6,7 @@ Below is the report regarding the project proposal described in this [document](
 
 ## Goals of the project
 
-Ryan and TJ set out to create a basic example of a Model-View-Controller (MVC) that would be used in their Senior Design project. This design must create the framework for a gym reservation system. The View portion must incorporate elements of GTK, which neither Ryan nor TJ have had experience on previously. The system must be light enough to run off of a Raspberry Pi.
+Ryan and TJ set out to create a basic example of a [Model-View-Controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) (MVC) that would be used in their Senior Design project. This design must create the framework for a gym reservation system. The View portion must incorporate elements of GTK, which neither Ryan nor TJ have had experience on previously. The system must be light enough to run off of a Raspberry Pi.
 
 This MVC must be capable of taking in machine specifications, such as type (treadmill versus bicycle), status (open versus reserved), location in the gym and an identification number (ID). Once an input has been given to the system, through the use of a GTK graphical user interface (GUI), the user should be able to see the status of all the machines. This status should be displayed in such a way that the average user can easily determine where a machine is located in the gym.
 
@@ -16,7 +16,7 @@ This project must be testable, as there will be several other modules that must 
 
 The resources can be categorized primarily in two ways. The first are software tools. The team used Git to collaborate and work on separate features of the project simultaneously. Additionally, the team used Python 3.4 and its built-in libraries to design and create the project.
 
-The second category are hardware tools. This is the Raspberry Pi that the team showed the project could be run on. However, the implementation is quite platform agnostic and will work on a wide range of machines, provided that machine has a working Python 3.4 interpreter.
+The second category are hardware tools. This is the Raspberry Pi that the team showed the project could be run on. However, the implementation is quite platform agnostic and will work on a wide range of machines, provided that machine has a working Python 3.4 interpreter and can use Gtk to produce windows.
 
 ## What the Team Learned
 
@@ -118,7 +118,7 @@ This was really exciting for the team because now the team was able to be quite 
 
 Neither of the two team members had ever worked with a combination of MVC and GTK. In fact, neither of the team members really had an experience with GTK at all. This allowed for a lot of learning and preparation for the senior design project, where there will be a significant amount of work required in the area of UI development to ensure that our project is easy to use.
 
-GTK modules is what makes the majority of GUI's used in Linux systems. It is modular and very useful for almost any application. It worked well in this case since each machine could be shown as it's own individual button, enabling an easy way to interact with the GUI created. In combination with MVC  
+GTK modules are what makes the majority of GUI's used in Linux systems. It is modular and very useful for almost any application. It worked well in this case since each machine could be shown as it's own individual button, enabling an easy way to interact with the GUI created. In combination with MVC  
 
 ## Conclusion
 
