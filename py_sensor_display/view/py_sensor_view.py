@@ -1,6 +1,6 @@
 from math import log10, ceil
 
-from model.py_sensor_model import Model
+from model.py_sensor_model import Model, Status
 from gi.repository import Gtk, Gdk, cairo
 
 class View:
@@ -183,6 +183,10 @@ class GTKView(Gtk.Window, View):
         self.grid.attach(stack_switcher, 0, 50, 2, 1)
         self.grid.attach(stack, 2, 50, 2, 1)
 
+        status_busy = Gtk.Button.new_with_label("Set Busy")
+        status_busy.connect("clicked", self.set_modifying_machine_status)
+        self.grid.attach(status_busy, 4, 50, 2, 1)
+
     def main(self):
         Gtk.main()
 
@@ -230,6 +234,18 @@ class GTKView(Gtk.Window, View):
 
             temp_button = Gtk.Button( label = str(m_id) )
 
+            """
+            temp_map = temp_button.get_colormap()
+            color = temp_map.alloc_color("red")
+
+            style = temp_map.get_style().copy()
+            style.bg[Gtk.STATE_NORMAL] = color
+
+            temp_button.set_style(style)
+            """
+
+            temp_button.override_background_color(Gtk.StateFlags.PRELIGHT, Gdk.RGBA(1, 0, 1, .5))
+
             temp_button.connect("clicked", self.set_modifying_machine_id)
             self.grid.attach( temp_button, loc[0], loc[1], 1, 1)
 
@@ -248,4 +264,12 @@ class GTKView(Gtk.Window, View):
         self.window.connect("delete-event", Gtk.main_quit)
         self.window.show_all()
         self.main()
+
+    def set_modifying_machine_status(self, button):
+        if self.modifying_machine_id is None:
+            # TODO: Raise an error?
+            return
+
+        current_machine = self.model.set_machine_status(self.modifying_machine_id, Status.BUSY)
+
 
