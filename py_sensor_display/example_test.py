@@ -58,7 +58,7 @@ def welcome(controller, view):
     controller.add_machine(machine4)
 
     # Add our fifth machine
-    machine5 = Machine(7, MachineType.BICYCLE, [5, 6, 1], True)
+    machine5 = Machine(7, MachineType.BICYCLE, [6, 6, 1], True)
     controller.add_machine(machine5)
 
     print("This is a text based view of the locations of the machines")
@@ -67,6 +67,19 @@ def welcome(controller, view):
     print("Now for a GUI view of the locations of the machines")
     view.start_gui()
 
+    print("Now let's add a custom machine")
+    id_num = int(input("Please input an ID number: "))
+    location = []
+    location.append(int(input("Please input the x location of the machine: ")))
+    location.append(int(input("Please input the y location of the machine: ")))
+    location.append(1)
+    custom_machine = Machine(id_num, MachineType.TREADMILL, location, True)
+    controller.add_machine(custom_machine)
+
+
+    view2 = GTKView(controller.get_model())
+    print("How we will display the new GUI")
+    view2.start_gui()
 
 if __name__ == "__main__":
     main()

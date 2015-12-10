@@ -63,6 +63,9 @@ class Status(Enum):
     RESERVED = 3
     OUT_OF_ORDER = 4
 
+    def __str__(self):
+        return self.name.capitalize()
+
     def color_string(self):
         """
         Returns the correct color start and finish sequence

@@ -152,6 +152,7 @@ class GTKView(Gtk.Window, View):
 
         # Create a box that all of our widgets will add to.
         self.grid = Gtk.Grid()
+        self.grid.set_column_homogeneous(True)
 
         # Store that box into our window
         self.window.add(self.grid)
@@ -173,6 +174,7 @@ class GTKView(Gtk.Window, View):
         self.set_status_switcher()
 
     def set_status_switcher(self):
+        """
         stack = Gtk.Stack()
         label = Gtk.Label()
         label2 = Gtk.Label()
@@ -182,10 +184,29 @@ class GTKView(Gtk.Window, View):
         stack_switcher.set_stack(stack)
         self.grid.attach(stack_switcher, 0, 50, 2, 1)
         self.grid.attach(stack, 2, 50, 2, 1)
+        """
 
-        status_busy = Gtk.Button.new_with_label("Set Busy")
-        status_busy.connect("clicked", self.set_modifying_machine_status)
-        self.grid.attach(status_busy, 4, 50, 2, 1)
+        self.show_status_button = Gtk.Button.new_with_label("Show Status")
+        self.show_status_button.connect("clicked", self.open_status_window)
+        self.grid.attach(self.show_status_button, 0, 50, 2, 1)
+        # self.grid.add(self.show_status_button)
+
+        self.status_reserved_button = Gtk.Button.new_with_label("Set Reserved")
+        self.status_reserved_button.machine_status = Status.RESERVED
+        self.status_reserved_button.connect("clicked", self.set_modifying_machine_status)
+        self.grid.attach(self.status_reserved_button, 2, 50, 2, 1)
+
+
+        self.status_busy = Gtk.Button.new_with_label("Set Busy")
+        self.status_busy.machine_status = Status.BUSY
+        self.status_busy.connect("clicked", self.set_modifying_machine_status)
+        self.grid.attach(self.status_busy, 4, 50, 2, 1)
+
+        self.status_open = Gtk.Button.new_with_label("Set Open")
+        self.status_open.machine_status = Status.OPEN
+        self.status_open.connect("clicked", self.set_modifying_machine_status)
+        self.grid.attach(self.status_open, 6, 50, 2, 1)
+        # self.grid.add(self.status_open)
 
     def main(self):
         Gtk.main()
@@ -249,6 +270,11 @@ class GTKView(Gtk.Window, View):
             temp_button.connect("clicked", self.set_modifying_machine_id)
             self.grid.attach( temp_button, loc[0], loc[1], 1, 1)
 
+        for x in range(1, max_x):
+            for y in range(1, max_y):
+                blank_button = Gtk.Button()
+                self.grid.attach( blank_button, x, y, 1, 1 )
+
     def start_gui(self, x_size=400, y_size=400):
         """
         Start gui starts the gui of the current View
@@ -270,6 +296,40 @@ class GTKView(Gtk.Window, View):
             # TODO: Raise an error?
             return
 
-        current_machine = self.model.set_machine_status(self.modifying_machine_id, Status.BUSY)
+        current_machine = self.model.set_machine_status(self.modifying_machine_id, button.machine_status)
+        print("Set Machine `{0}` to Status `{1}`".format(self.modifying_machine_id, button.machine_status))
 
+    def open_status_window(self, button):
+        # Open a status window
+        temp_window = Gtk.Window(title="Current Status")
+
+        temp_window.set_default_size(400, 100)
+
+        temp_window.liststore = Gtk.ListStore(str, str)
+
+        temp_id = str(self.modifying_machine_id)
+        temp_status = str(self.model.get_machine_status(int(temp_id)))
+        temp_window.liststore.append([temp_id, temp_status])
+
+        treeview = Gtk.TreeView(model=temp_window.liststore)
+
+        renderer_text = Gtk.CellRendererText()
+        column_text = Gtk.TreeViewColumn("Machine ID", renderer_text, text=0)
+        treeview.append_column(column_text)
+
+        renderer_editabletext = Gtk.CellRendererText()
+        renderer_editabletext.set_property("editable", True)
+
+        column_editabletext = Gtk.TreeViewColumn("Current Status",
+            renderer_editabletext, text=1)
+        treeview.append_column(column_editabletext)
+
+        renderer_editabletext.connect("edited", self.text_edited)
+
+        temp_window.add(treeview)
+
+        temp_window.show_all()
+
+    def text_edited(self, widget, path, text):
+        self.liststore[path][1] = text
 
