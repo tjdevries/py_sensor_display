@@ -6,9 +6,11 @@ Below is the report regarding the project proposal described in this [document](
 
 ## Goals of the project
 
-Ryan and I set out to create a basic example of a Model-View-Controller (MVC) for our Senior Design project. This design must create the framework for a gym reservation system. The View portion must incorporate elements of GTK, which neither Ryan nor TJ have had experience on previously. The system must be light enough to run off of a Raspberry Pi.
+Ryan and TJ set out to create a basic example of a Model-View-Controller (MVC) that would be used in their Senior Design project. This design must create the framework for a gym reservation system. The View portion must incorporate elements of GTK, which neither Ryan nor TJ have had experience on previously. The system must be light enough to run off of a Raspberry Pi.
 
-This MVC must be capable of taking in machine specifications, such as type (treadmill versus bicycle), status (open versus reserved), location in the gym and an identification number (ID). Once an input has been given to the machine, through the use of a GTK graphical user interface (GUI), the user should be able to see the status of all the machines. This status should be displayed in such a way that the average user can easily determine where a machine is located in the gym.
+This MVC must be capable of taking in machine specifications, such as type (treadmill versus bicycle), status (open versus reserved), location in the gym and an identification number (ID). Once an input has been given to the system, through the use of a GTK graphical user interface (GUI), the user should be able to see the status of all the machines. This status should be displayed in such a way that the average user can easily determine where a machine is located in the gym.
+
+This project must be testable, as there will be several other modules that must be built around  and on top of the development done for this project. Testing must be demonstrated on several, if not all, applicable functions in some automated way.
 
 ## Resources Used
 
