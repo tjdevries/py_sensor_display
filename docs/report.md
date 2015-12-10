@@ -18,4 +18,57 @@ The second category are hardware tools. This is the Raspberry Pi that the team s
 
 ## What the Team Learned
 
+There were two main areas that the team showed marked improvement in. 
 
+The first area was in regards to test driven development. Many of the classes and functions were defined with a `pass` statement, and then tests were written for expected output. Once the tests were written, code was developed in order to fulfill the testing requirements. Both TJ and Ryan had little experience doing this in a group setting. It was very helpful for ensuring that not only was code reliable, but also ensuring that all aspects of the code were modular and written in the smallest logical subsections.
+
+An example of this strategy is demonstrated below.
+
+Two classes were defined before work on the testing began. These classes were `Model` and `Controller` (the *M* and the *C* of MVC, respectively). They each were given a function called `add_machine`, which was originally designed with a `pass`. This is shown in the following code block.
+
+```python
+class Model:
+    def __init__(self, ...):
+        # Code here
+
+    def add_machine(self, machine):
+        pass
+
+class Controller:
+    def __init__(self, model):
+        # Code here
+        self.model = model
+
+    def add_machine(self, machine):
+        pass
+```
+
+At this point, the two functions of `add_machine` do not do anything. Even so, tests were written for them in our testing file. A few of the tests are described below.
+
+```python
+class TestBasicFunctions(unittest.TestCase):
+    def SetUp(self): 
+        # Create our controller
+        self.controller = Controller()
+
+        #create our view
+        self.view = View(self.controller.get_model())
+
+        # Create an example machine
+        self.machine1 = Machine(1, MachineType.TREADMILL, [1, 1, 1])
+
+    def testAddMachine(self):
+        # Add our example machine
+        self.controller.add_machine(self.machine1)
+
+        self.assertEqual(self.controller.get_machines()[1], self.machine1)
+
+    def testAddMachine_DuplicateMachine(self):
+        # Add our first machine
+        self.controller.add_machine(self.machine1)
+
+        # Try to add the same machine, should fail
+        self.assertRaises(Exception, self.controller.add_machine, self.machine1)
+```
+
+If you are not familiar with the unittest library in Python, do not worry about that .The main idea is that the team was trying to test that first, the system was  capable of adding a machine to the model, and second, that it would not take duplicate machines into the model (machines can't exist in two places!). 
