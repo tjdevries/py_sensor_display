@@ -165,36 +165,6 @@ class GTKView(Gtk.Window, View):
         # pixbuf = img.get_pixbuf()
         # Gtk.CellRendererPixbuf()
 
-        # Initialize the buttons
-        self.init_buttons()
-
-    def init_buttons(self):
-        button1 = Gtk.Button(label = "Machine1")
-        button1.connect("clicked", self.on_button1_clicked)
-        button2 = Gtk.Button(label="Machine2")
-        button2.connect("clicked", self.on_button2_clicked)
-        button3 = Gtk.Button(label="Machine3")
-        button3.connect("clicked", self.on_button3_clicked)
-        button4 = Gtk.Button(label="Machine4")
-        button4.connect("clicked", self.on_button4_clicked)
-
-        #attach(child, left, top, width, height) col and rows to attach
-        self.grid.add(button1)
-        self.grid.attach(button2, 1, 0, 2, 1)
-        self.grid.attach(button3, 2, 8, 2, 2)
-        self.grid.attach(button4, 4, 8, 2, 2)
-
-    def on_button1_clicked(self, widget):
-        print("Fool, this don't work yet!")
-
-    def on_button2_clicked(self, widget):
-        print("Fool, this don't work yet!")
-
-    def on_button3_clicked(self, widget):
-        print("Fool, this don't work yet!")
-
-    def on_button4_clicked(self, widget):
-        print("Fool, this don't work yet!")
 
     def bot_row(self):
         self.set_status_switcher()
@@ -218,7 +188,7 @@ class GTKView(Gtk.Window, View):
 
         for m_id, machine in current_machines.items():
             loc = machine.get_location()
-            self.grid.attach( Gtk.Button(label=str(m_id)), loc[0], loc[1], loc[0], loc[1])
+            self.grid.attach( Gtk.Button(label=str(m_id)), loc[0], loc[1], 1, 1)
 
 
     def gui_display_locations(self):
@@ -226,7 +196,7 @@ class GTKView(Gtk.Window, View):
 
         for m_id, machine in current_machines.items():
             loc = machine.get_location()
-            self.grid.attach( Gtk.Button(label=str(m_id)), loc[0], loc[1], loc[0], loc[1])
+            self.grid.attach( Gtk.Button(label=str(m_id)), loc[0], loc[1], 1, 1)
 
     def start_gui(self, x_size=400, y_size=400):
         """
