@@ -26,9 +26,9 @@ There were two main areas that the team showed marked improvement in.
 
 The first area was in regards to test driven development. Many of the classes and functions were defined with a `pass` statement, and then tests were written for expected output. Once the tests were written, code was developed in order to fulfill the testing requirements. Both TJ and Ryan had little experience doing this in a group setting. It was very helpful for ensuring that not only was code reliable, but also ensuring that all aspects of the code were modular and written in the smallest logical subsections.
 
-An example of this strategy is demonstrated below.
+An example of the strategy the team implemented is described below.
 
-Two classes were defined before work on the testing began. These classes were `Model` and `Controller` (the *M* and the *C* of MVC, respectively). They each were given a function called `add_machine`, which was originally designed with a `pass`. This is shown in the following code block.
+Two classes were defined before work on the testing began. These classes were `Model` and `Controller` (the **M** and the **C** of MVC, respectively). They each were given a function called `add_machine`, which was originally designed with a `pass`. This is shown in the following code block.
 
 ```python
 class Model:
@@ -77,7 +77,7 @@ class TestBasicFunctions(unittest.TestCase):
 
 If you are not familiar with the unittest library in Python, do not worry about that .The main idea is that the team was trying to test that first, the system was  capable of adding a machine to the model, and second, that it would not take duplicate machines into the model (machines can't exist in two places!). 
 
-Obviously at this point, these tests will fail. Neither of the `add_machine` methods do anything at all. So the team began developing the functionality required by the tests. Eventually, the team arrived at the following code.
+Obviously at this point, these tests will fail. Neither of the `add_machine` methods do anything at all. So the team began developing the functionality required by the tests. Eventually, the team arrived at the following code. These implementations can be seen in their final form, with the other initialization and methods here: [model](https://github.com/tjdevries/py_sensor_display/blob/master/py_sensor_display/model/py_sensor_model.py), [controller](https://github.com/tjdevries/py_sensor_display/blob/master/py_sensor_display/controller/py_sensor_controller.py).
 
 ```python
 class Model():
@@ -102,9 +102,11 @@ class Controller():
         self.model.add_machine(machine)
 ```
 
-Once these (and the other tests and implementations were created) we could run our [basic_test.py](https://github.com/tjdevries/py_sensor_display/blob/master/py_sensor_display/basic_test.py) and receive the following results:
+Once these (and the other tests and implementations were created) we could run our [basic_test.py](https://github.com/tjdevries/py_sensor_display/blob/master/py_sensor_display/basic_test.py) and receive the following results (at the time of completion of this report):
 
 ```
+$ python3 basic_test.py
+
 ......
 ----------------------------------------------------------------------
 Ran 6 tests in 0.002s
