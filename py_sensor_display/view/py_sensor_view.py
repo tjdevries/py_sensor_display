@@ -189,9 +189,16 @@ class GTKView(Gtk.Window, View):
     def on_button4_clicked(self, widget):
         print("Fool, this don't work yet!")
 
+    def start_gui(self, x_size=400, y_size=400):
+        """
+        Start gui starts the gui of the current View
 
-# win = GTKView()
-# win.connect("delete-event", Gtk.main_quit)
-# win.show_all()
-# Gtk.main()
+        :x_size: The size of the gui in x
+        :y_size: The size of the gui in y
+        :returns: None
+
+        """
+        self.connect("delete-event", Gtk.main_quit)
+        self.show_all()
+        Gtk.main()
 
