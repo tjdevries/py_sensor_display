@@ -1,15 +1,11 @@
 from math import log10, ceil
 
 from model.py_sensor_model import Model
-#from gi.repository import Gtk
+from gi.repository import Gtk
 
 class View():
     def __init__(self, model):
         self.model = model
-        # win = Gtk.Window()
-        # win.connect("delete-event", GTK.main_quit)
-        # win.show_all()
-        # GTK.main()
 
     def get_machines(self):
         return self.model.get_machines()
@@ -144,3 +140,48 @@ class View():
         final_string = "\n".join(row for row in place_holder)
 
         return final_string
+
+
+class GTKView(Gtk.Window, View):
+    def __init__(self):
+        #init GTK stuff here
+        Gtk.Window.__init__(self, title="Sense-Able Gym Viewer")
+        
+        self.box = Gtk.Box(spacing = 6)
+        self.add(self.box)
+        
+        self.button1 = Gtk.Button(label = "Add Machine")
+        self.button1.connect("clicked", self.on_button1_clicked)
+        self.box.pack_start(self.button1, True, True, 0)
+
+        self.button2 = Gtk.Button(label="Machine Busy")
+        self.button2.connect("clicked", self.on_button2_clicked)
+        self.box.pack_start(self.button2, True, True, 0)
+
+        self.button3 = Gtk.Button(label="Remove Machine")
+        self.button3.connect("clicked", self.on_button3_clicked)
+        self.box.pack_start(self.button3, True, True, 0)
+
+        self.button4 = Gtk.Button(label="Machine Free")
+        self.button4.connect("clicked", self.on_button4_clicked)
+        self.box.pack_start(self.button4, True, True, 0)
+
+    def on_button1_clicked(self, widget):
+        print("Fool, this don't work yet!")
+
+    def on_button2_clicked(self, widget):
+        print("Fool, this don't work yet!")
+
+    def on_button3_clicked(self, widget):
+        print("Fool, this don't work yet!")
+
+    def on_button4_clicked(self, widget):
+        print("Fool, this don't work yet!")
+
+
+win = GTKView()
+win.connect("delete-event", Gtk.main_quit)
+win.show_all()
+Gtk.main()
+
+        #super(GTKView, self).__init__(any_view_args)
