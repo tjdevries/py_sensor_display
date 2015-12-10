@@ -61,7 +61,11 @@ def welcome(controller, view):
     machine5 = Machine(7, MachineType.BICYCLE, [5, 6, 1], True)
     controller.add_machine(machine5)
 
+    print("This is a text based view of the locations of the machines")
     print(view.display_locations())
+
+    print("Now for a GUI view of the locations of the machines")
+    view.start_gui()
 
 
 if __name__ == "__main__":
