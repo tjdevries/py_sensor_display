@@ -2,6 +2,7 @@ from math import log10, ceil
 
 from model.py_sensor_model import Model
 from gi.repository import Gtk
+#import cairo
 
 class View():
     def __init__(self, model):
@@ -146,7 +147,15 @@ class GTKView(Gtk.Window, View):
     def __init__(self):
         #init GTK stuff here
         Gtk.Window.__init__(self, title="Sense-Able Gym Viewer")
-        
+        #self.Window.set_size_request(-1, -1)
+        #img = Gtk.Image()
+        #img.set_from_file("treadmill_occupied.jpg")
+        #pixbuf = image.get_pixbuf()
+        #Gdk.cairo_set_source_pixbuf(cr, pixbuf, 10, 10)
+
+        self.init_buttons()
+
+    def init_buttons(self):
         self.box = Gtk.Box(spacing = 6)
         self.add(self.box)
         
@@ -184,4 +193,3 @@ win.connect("delete-event", Gtk.main_quit)
 win.show_all()
 Gtk.main()
 
-        #super(GTKView, self).__init__(any_view_args)
