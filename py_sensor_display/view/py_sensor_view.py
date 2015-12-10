@@ -184,28 +184,6 @@ class GTKView(Gtk.Window, View):
         self.grid.attach(button3, 2, 8, 2, 2)
         self.grid.attach(button4, 4, 8, 2, 2)
 
-    def init_old_buttons(self):
-        """ Currently deprecated """
-        self.button1 = Gtk.Button(label = "Add Machine")
-        self.button1.connect("clicked", self.on_button1_clicked)
-        self.box.pack_start(self.button1, True, True, 0)
-
-        self.button2 = Gtk.Button(label="Machine Busy")
-        self.button2.connect("clicked", self.on_button2_clicked)
-        self.box.pack_start(self.button2, True, True, 0)
-
-        self.button3 = Gtk.Button(label="Remove Machine")
-        self.button3.connect("clicked", self.on_button3_clicked)
-        self.box.pack_start(self.button3, True, True, 0)
-
-        self.button4 = Gtk.Button(label="Machine Free")
-        self.button4.connect("clicked", self.on_button4_clicked)
-        self.box.pack_start(self.button4, True, True, 0)
-
-        self.button5 = Gtk.Button(label="Refresh Machines")
-        self.button5.connect("clicked", self.refresh_machines)
-        self.box.pack_start(self.button5, True, True, 0)
-
     def on_button1_clicked(self, widget):
         print("Fool, this don't work yet!")
 
@@ -238,27 +216,17 @@ class GTKView(Gtk.Window, View):
     def refresh_machines(self, widget):
         current_machines = self.get_machines()
 
-        """
         for m_id, machine in current_machines.items():
             loc = machine.get_location()
-            self.table.attach( Gtk.Button(label=str(m_id)), loc[0], loc[1], loc[0], loc[1])
-        """
-        self.ebutton = Gtk.Button(label="test")
-        self.table.add(self.ebutton)
+            self.grid.attach( Gtk.Button(label=str(m_id)), loc[0], loc[1], loc[0], loc[1])
 
-        # self.box.pack_start(self.table, True, True, 10)
-        # self.table.attach( self.ebutton, 0,0,1,1 )
 
     def gui_display_locations(self):
         current_machines = self.get_machines()
 
-        self.table = Gtk.Grid()
-
         for m_id, machine in current_machines.items():
             loc = machine.get_location()
-            self.table.attach( Gtk.Button(label=str(m_id)), loc[0], loc[1], loc[0], loc[1])
-
-        self.box.pack_start(self.table, True, True, 10)
+            self.grid.attach( Gtk.Button(label=str(m_id)), loc[0], loc[1], loc[0], loc[1])
 
     def start_gui(self, x_size=400, y_size=400):
         """
@@ -271,6 +239,7 @@ class GTKView(Gtk.Window, View):
         """
         self.window.set_border_width(10)
         self.bot_row()
+        self.gui_display_locations()
         self.window.connect("delete-event", Gtk.main_quit)
         self.window.show_all()
         self.main()
